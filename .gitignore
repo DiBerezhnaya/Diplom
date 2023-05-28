@@ -39,4 +39,4 @@ out/
 *.rar
 
 ### Exclusions ###
-!gradle/wrapper/gradle-wrapper.ja
+!gradle/wrapper/gradle-wrapper.jar
