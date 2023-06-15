@@ -8,6 +8,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
+import static com.sun.beans.introspect.PropertyInfo.Name.hidden;
 import static ru.netology.page.MainPage.*;
 
 public class VerificationPage {
@@ -16,7 +17,7 @@ public class VerificationPage {
         buttonDebit.shouldBe(visible);
     }
 
-    public void buyCreditCard() {
+    public void payCreditCard() {
         buttonBuyWithCredit.click();
         buttonCredit.shouldBe(visible);
     }
@@ -33,7 +34,7 @@ public class VerificationPage {
     private SelenideElement fieldCardNumberError = $x("//*[text()='Номер карты']/..//*[@class='input__sub']");
     private SelenideElement fieldMonthError = $x("//*[text()='Месяц']/..//*[@class='input__sub']");
     private SelenideElement fieldYearError = $x("//*[text()='Год']/..//*[@class='input__sub']");
-    private SelenideElement fieldOwnerError = $x("//*[text()='Владелец']/..//*[@class='input__sub']");
+    private SelenideElement fieldCardownerError = $x("//*[text()='Владелец']/..//*[@class='input__sub']");
     private SelenideElement fieldCvcError = $x("//*[text()='CVC/CVV']/..//*[@class='input__sub']");
 
     private SelenideElement notificationApproved = $x("//div[contains(@class, 'notification_status_ok')]");
@@ -66,14 +67,14 @@ public class VerificationPage {
         fieldCardNumberError.shouldBe(visible);
         fieldMonthError.shouldBe(hidden);
         fieldYearError.shouldBe(hidden);
-        fieldOwnerError.shouldBe(hidden);
+        fieldСardownerError.shouldBe(hidden);
         fieldCvcError.shouldBe(hidden);
     }
 
     public void sendingValidDataWithFakerCardNumber () {
         fieldMonthError.shouldBe(hidden);
         fieldYearError.shouldBe(hidden);
-        fieldOwnerError.shouldBe(hidden);
+        fieldСardownerError.shouldBe(hidden);
         fieldCvcError.shouldBe(hidden);
         notificationError.shouldBe(visible, Duration.ofSeconds(15));
     }
@@ -82,7 +83,7 @@ public class VerificationPage {
         fieldCardNumberError.shouldBe(hidden);
         fieldMonthError.shouldBe(visible);
         fieldYearError.shouldBe(hidden);
-        fieldOwnerError.shouldBe(hidden);
+        fieldСardownerError.shouldBe(hidden);
         fieldCvcError.shouldBe(hidden);
     }
 
@@ -90,7 +91,7 @@ public class VerificationPage {
         fieldCardNumberError.shouldBe(hidden);
         fieldMonthError.shouldBe(hidden);
         fieldYearError.shouldBe(visible);
-        fieldOwnerError.shouldBe(hidden);
+        fieldСardownerError.shouldBe(hidden);
         fieldCvcError.shouldBe(hidden);
     }
 
@@ -106,7 +107,7 @@ public class VerificationPage {
         fieldCardNumberError.shouldBe(hidden);
         fieldMonthError.shouldBe(hidden);
         fieldYearError.shouldBe(hidden);
-        fieldOwnerError.shouldBe(visible);
+        fieldСardownerError.shouldBe(visible);
         fieldCvcError.shouldBe(hidden);
     }
 
@@ -114,7 +115,7 @@ public class VerificationPage {
         fieldCardNumberError.shouldBe(hidden);
         fieldMonthError.shouldBe(hidden);
         fieldYearError.shouldBe(hidden);
-        fieldOwnerError.shouldBe(hidden);
+        fieldСardownerError.shouldBe(hidden);
         fieldCvcError.shouldBe(visible);
     }
 
@@ -123,7 +124,7 @@ public class VerificationPage {
         fieldCardNumberError.shouldBe(visible);
         fieldMonthError.shouldBe(visible);
         fieldYearError.shouldBe(visible);
-        fieldOwnerError.shouldBe(visible);
+        fieldСardownerError.shouldBe(visible);
         fieldCvcError.shouldBe(visible);
     }
 

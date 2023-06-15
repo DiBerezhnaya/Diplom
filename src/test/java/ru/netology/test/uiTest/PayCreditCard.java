@@ -1,2 +1,5 @@
-package ru.netology.test.uiTest;public class PayCreditCard {
+package ru.netology.test.uiTest;
+
+public class PayCreditCard {
+
 }
