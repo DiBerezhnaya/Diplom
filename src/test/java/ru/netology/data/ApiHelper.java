@@ -1,6 +1,11 @@
 package ru.netology.data;
 
-import jdk.jfr.ContentType;
+import com.google.gson.Gson;
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.filter.log.LogDetail;
+import io.restassured.http.ContentType;
+import io.restassured.specification.RequestSpecification;
+import static io.restassured.RestAssured.given;
 
 public class ApiHelper {
 
