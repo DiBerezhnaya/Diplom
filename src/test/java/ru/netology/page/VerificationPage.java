@@ -3,12 +3,11 @@ package ru.netology.page;
 import com.codeborne.selenide.SelenideElement;
 import ru.netology.data.DataHelper;
 import java.time.Duration;
-import static com.codeborne.selenide.Condition.hidden;
-import static com.codeborne.selenide.Condition.visible;
+
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
-import static com.sun.beans.introspect.PropertyInfo.Name.hidden;
 import static ru.netology.page.MainPage.*;
 
 public class VerificationPage {
@@ -25,7 +24,7 @@ public class VerificationPage {
     private final SelenideElement cardNumberField = $x("//input[@placeholder='0000 0000 0000 0000']");
     private final SelenideElement monthField = $x("//input[@placeholder='08']");
     private final SelenideElement yearField = $x("//input[@placeholder='22']");
-    private final SelenideElement ownerField = $(byText("Владелец")).parent().$("input");
+    private final SelenideElement cardownerField = $(byText("Владелец")).parent().$("input");
     private final SelenideElement cvcField = $x("//input[@placeholder='999']");
     private SelenideElement buttonContinue = $x("//span[text()='Продолжить']//ancestor::button");
 
@@ -34,7 +33,7 @@ public class VerificationPage {
     private SelenideElement fieldCardNumberError = $x("//*[text()='Номер карты']/..//*[@class='input__sub']");
     private SelenideElement fieldMonthError = $x("//*[text()='Месяц']/..//*[@class='input__sub']");
     private SelenideElement fieldYearError = $x("//*[text()='Год']/..//*[@class='input__sub']");
-    private SelenideElement fieldCardownerError = $x("//*[text()='Владелец']/..//*[@class='input__sub']");
+    private SelenideElement fieldCardOwnerError = $x("//*[text()='Владелец']/..//*[@class='input__sub']");
     private SelenideElement fieldCvcError = $x("//*[text()='CVC/CVV']/..//*[@class='input__sub']");
 
     private SelenideElement notificationApproved = $x("//div[contains(@class, 'notification_status_ok')]");
@@ -49,7 +48,7 @@ public class VerificationPage {
         cardNumberField.setValue(info.getNumber());
         monthField.setValue(info.getMonth());
         yearField.setValue(info.getYear());
-        ownerField.setValue(info.getCardowner());
+        cardownerField.setValue(info.getCardowner());
         cvcField.setValue(info.getCvc());
         buttonContinue.click();
     }
@@ -58,7 +57,7 @@ public class VerificationPage {
         cardNumberField.setValue(info.getNumber());
         monthField.setValue(info.getMonth());
         yearField.setValue(info.getYear());
-        ownerField.setValue(info.getCardowner());
+        cardownerField.setValue(info.getCardowner());
         cvcField.setValue(info.getCvc());
         buttonContinue.click();
     }
@@ -67,14 +66,14 @@ public class VerificationPage {
         fieldCardNumberError.shouldBe(visible);
         fieldMonthError.shouldBe(hidden);
         fieldYearError.shouldBe(hidden);
-        fieldСardownerError.shouldBe(hidden);
+        fieldCardOwnerError.shouldBe(hidden);
         fieldCvcError.shouldBe(hidden);
     }
 
     public void sendingValidDataWithFakerCardNumber () {
         fieldMonthError.shouldBe(hidden);
         fieldYearError.shouldBe(hidden);
-        fieldСardownerError.shouldBe(hidden);
+        fieldCardOwnerError.shouldBe(hidden);
         fieldCvcError.shouldBe(hidden);
         notificationError.shouldBe(visible, Duration.ofSeconds(15));
     }
@@ -83,7 +82,7 @@ public class VerificationPage {
         fieldCardNumberError.shouldBe(hidden);
         fieldMonthError.shouldBe(visible);
         fieldYearError.shouldBe(hidden);
-        fieldСardownerError.shouldBe(hidden);
+        fieldCardOwnerError.shouldBe(hidden);
         fieldCvcError.shouldBe(hidden);
     }
 
@@ -91,7 +90,7 @@ public class VerificationPage {
         fieldCardNumberError.shouldBe(hidden);
         fieldMonthError.shouldBe(hidden);
         fieldYearError.shouldBe(visible);
-        fieldСardownerError.shouldBe(hidden);
+        fieldCardOwnerError.shouldBe(hidden);
         fieldCvcError.shouldBe(hidden);
     }
 
@@ -107,7 +106,7 @@ public class VerificationPage {
         fieldCardNumberError.shouldBe(hidden);
         fieldMonthError.shouldBe(hidden);
         fieldYearError.shouldBe(hidden);
-        fieldСardownerError.shouldBe(visible);
+        fieldCardOwnerError.shouldBe(visible);
         fieldCvcError.shouldBe(hidden);
     }
 
@@ -115,7 +114,7 @@ public class VerificationPage {
         fieldCardNumberError.shouldBe(hidden);
         fieldMonthError.shouldBe(hidden);
         fieldYearError.shouldBe(hidden);
-        fieldСardownerError.shouldBe(hidden);
+        fieldCardOwnerError.shouldBe(hidden);
         fieldCvcError.shouldBe(visible);
     }
 
@@ -124,7 +123,7 @@ public class VerificationPage {
         fieldCardNumberError.shouldBe(visible);
         fieldMonthError.shouldBe(visible);
         fieldYearError.shouldBe(visible);
-        fieldСardownerError.shouldBe(visible);
+        fieldCardOwnerError.shouldBe(visible);
         fieldCvcError.shouldBe(visible);
     }
 
