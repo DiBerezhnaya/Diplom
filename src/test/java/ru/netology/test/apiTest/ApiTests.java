@@ -9,7 +9,7 @@ public class ApiTests {
     DataHelper.CardInfo approvedCardInfo = DataHelper.getApprovedCard();
     DataHelper.CardInfo declinedCardInfo = DataHelper.getDeclinedCard();
 
-       //Запрос на покупку по карте со статусом APPROVED
+    //Запрос на покупку по карте со статусом APPROVED
     @Test
     void shouldApprovePayment() {
         ApiHelper.usePayCardApproved(approvedCardInfo);

@@ -37,7 +37,6 @@ out/
 *.zip
 *.tar.gz
 *.rar
-*.bat
 
 ### Exclusions ###
 !gradle/wrapper/gradle-wrapper.jar
